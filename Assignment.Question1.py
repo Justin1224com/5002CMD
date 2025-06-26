@@ -50,7 +50,10 @@ def generate_ic():
 
 def simulate_hashing():
     sizes = [1009, 2003]
-    for size in sizes:
+    table_names = ["Smaller", "Bigger"]
+    average_collisions_list = []
+
+    for idx, size in enumerate(sizes):
         print(f"\nHash Table Size: {size}")
         total_collisions = []
         for round_num in range(10):
@@ -62,6 +65,14 @@ def simulate_hashing():
             total_collisions.append(round_collisions)
             print(f"Round {round_num+1} Collisions: {round_collisions}")
         avg = sum(total_collisions) / 10
+        average_collisions_list.append(avg)
         print(f"Average Collisions: {avg:.2f}")
+
+    print()
+    # Calculate and display collision rates
+    for i in range(2):
+        rate = (average_collisions_list[i] / 1000) * 100
+        print(f"Collision Rate for {table_names[i]} Hash Table: {rate:.2f} %")
+
 
 simulate_hashing()
