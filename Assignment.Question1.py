@@ -10,12 +10,11 @@ class HashTable:
         self.table = [[] for _ in range(size)]
 
     def hash_function(self, ic_number):
-    part1 = int(ic_number[0:4])
-    part2 = int(ic_number[4:8])
-    part3 = int(ic_number[8:12])
-    folded = part1 + part2 + part3
-    return folded % self.size
-
+        part1 = int(ic_number[0:4])
+        part2 = int(ic_number[4:8])
+        part3 = int(ic_number[8:12])
+        folded = part1 + part2 + part3
+        return folded % self.size
     def insert(self, ic_number):
         index = self.hash_function(ic_number)
         if ic_number not in self.table[index]:
@@ -49,7 +48,6 @@ def generate_ic():
 
     return f"{dob}{bp}{end}"
 
-
 def simulate_hashing():
     sizes = [1009, 2003]
     for size in sizes:
@@ -65,3 +63,5 @@ def simulate_hashing():
             print(f"Round {round_num+1} Collisions: {round_collisions}")
         avg = sum(total_collisions) / 10
         print(f"Average Collisions: {avg:.2f}")
+
+simulate_hashing()
