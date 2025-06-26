@@ -10,9 +10,11 @@ class HashTable:
         self.table = [[] for _ in range(size)]
 
     def hash_function(self, ic_number):
-        ic_str = str(ic_number)
-        folded = sum(int(ic_str[i:i+4]) for i in range(0, len(ic_str), 4))
-        return folded % self.size
+    part1 = int(ic_number[0:4])
+    part2 = int(ic_number[4:8])
+    part3 = int(ic_number[8:12])
+    folded = part1 + part2 + part3
+    return folded % self.size
 
     def insert(self, ic_number):
         index = self.hash_function(ic_number)
